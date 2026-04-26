@@ -7,100 +7,144 @@
 
 <style>
 body {
-    font-family: Arial;
-    background: linear-gradient(to right, #74ebd5, #9face6);
+    margin: 0;
+    font-family: "Segoe UI", Arial;
+    background: #f4f6f9;
 }
 
-.form-box {
-    width: 350px;
-    margin: 100px auto;
+/* NAVBAR */
+.navbar {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 40px;
+}
+.navbar h2 {
+    margin: 0;
+}
+
+/* CENTER CONTAINER */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+}
+
+/* LOGIN BOX */
+.login-box {
+    width: 380px;
     background: white;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
+/* TITLE */
 h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* INPUT */
 input {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: 15px;
 }
 
+/* BUTTON */
 button {
     width: 100%;
-    padding: 10px;
-    background: #1976d2;
+    background: #3498db;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 12px;
     font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
 button:hover {
-    background: #0d47a1;
+    background: #2980b9;
 }
 
-a {
-    display: block;
+/* LINKS */
+.link {
     text-align: center;
-    margin-top: 10px;
-    text-decoration: none;
+    margin-top: 15px;
 }
 
+/* MESSAGES */
 .message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
     text-align: center;
-    margin-bottom: 10px;
+    font-size: 14px;
 }
+
 .success {
-    color: green;
+    background: #d4edda;
+    color: #155724;
 }
+
 .error {
-    color: red;
+    background: #f8d7da;
+    color: #721c24;
 }
 </style>
 
 </head>
 <body>
 
-<div class="form-box">
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Alumni Portal</h2>
+</div>
 
-    <h2>Login</h2>
+<div class="wrapper">
 
-    <!-- SUCCESS MESSAGE -->
-    <%
-    String msg = request.getParameter("msg");
-    if("success".equals(msg)){
-    %>
-        <div class="message success">Registration Successful! Please login.</div>
-    <%
-    }
-    %>
+    <div class="login-box">
 
-    <!-- ERROR MESSAGE -->
-    <%
-    String error = request.getParameter("error");
-    if("invalid".equals(error)){
-    %>
-        <div class="message error">Invalid email or password</div>
-    <%
-    }
-    %>
+        <h2>Login</h2>
 
-    <form action="LoginServlet" method="post">
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
+        <!-- SUCCESS MESSAGE -->
+        <%
+        String msg = request.getParameter("msg");
+        if("success".equals(msg)){
+        %>
+            <div class="message success">
+                Registration Successful! Please login.
+            </div>
+        <%
+        }
+        %>
 
-        <button type="submit">Login</button>
-    </form>
+        <!-- ERROR MESSAGE -->
+        <%
+        String error = request.getParameter("error");
+        if("invalid".equals(error)){
+        %>
+            <div class="message error">
+                Invalid email or password
+            </div>
+        <%
+        }
+        %>
 
-    <a href="register.jsp">Don't have an account? Register</a>
+        <form action="LoginServlet" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="link">
+            <a href="register.jsp">New user? Register</a>
+        </div>
+
+    </div>
 
 </div>
 
